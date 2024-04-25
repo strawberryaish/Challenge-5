@@ -1,0 +1,155 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@font-face {
+  font-family: SpaceGrotesk;
+  src: url(font/SpaceGrotesk-VariableFont_wght.ttf);
+}
+:root {
+  --color-white: hsl(0, 0%, 100%);
+  --light-violet: hsl(270, 3%, 87%);
+  --dark-violet-1: hsl(279, 6%, 55%);
+  --dark-violet-2: hsl(278, 68%, 11%);
+}
+
+body {
+  font-family: "SpaceGrotesk", sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+}
+
+.image-box {
+  position: relative;
+}
+.image-box .bg-image {
+  height: 100vh;
+}
+.image-box .card-box-back, .image-box .card-box-front {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.image-box .card-box-back {
+  top: 61%;
+  left: 100%;
+}
+.image-box .card-box-back-details {
+  position: absolute;
+  top: 44%;
+  right: 11%;
+  font-size: 1.6rem;
+  color: var(--color-white);
+  font-weight: 600;
+}
+.image-box .card-box-front {
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  display: flex;
+}
+.image-box .card-box-front-details {
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  color: var(--color-white);
+}
+.image-box .card-box-front-details .card-logo {
+  width: 9rem;
+  position: absolute;
+  bottom: 140%;
+}
+.image-box .card-box-front-details .card-no-detail {
+  font-size: 2.8rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+}
+.image-box .card-box-front-details .front-box-1 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.form-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.form-box-form {
+  display: flex;
+  flex-direction: column;
+  width: 45rem;
+  padding: 1rem;
+}
+.form-box label {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  color: var(--dark-violet-2);
+  margin-bottom: 0.5rem;
+}
+.form-box input {
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  border: none;
+  border: 1px solid var(--dark-violet-1);
+  border-radius: 7px;
+}
+.form-box input::-moz-placeholder {
+  font-weight: 500;
+}
+.form-box input::placeholder {
+  font-weight: 500;
+}
+.form-box .date-box {
+  width: 90%;
+}
+.form-box .cvc-box {
+  width: 100%;
+}
+.form-box .more-detail-box {
+  display: flex;
+  align-items: center;
+}
+.form-box .more-detail-box #month, .form-box .more-detail-box #year {
+  width: 40%;
+}
+.form-box .more-detail-box #month {
+  margin-right: 0.7rem;
+}
+.form-box .more-detail-box #cvc {
+  width: 100%;
+}
+.form-box .btn {
+  padding: 1.5rem;
+  border: none;
+  background-color: var(--dark-violet-2);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.form-box .btn:hover {
+  background-color: var(--dark-violet-1);
+}/*# sourceMappingURL=style.css.map */

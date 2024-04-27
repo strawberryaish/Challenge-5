@@ -20,6 +20,11 @@ html {
     --light-violet: hsl(270, 3%, 87%);
     --dark-violet-1:  hsl(279, 6%, 55%);
     --dark-violet-2: hsl(278, 68%, 11%);
+    --error: hsl(0, 100%, 66%);
+    --error-rgba: hsla(0, 88%, 51%, 0.207);
+    --success: hsl(117, 97%, 26%);
+    --success-rgba: hsla(117, 99%, 57%, 0.064);
+
 
 }
 
@@ -140,17 +145,38 @@ body {
         font-size: 1.8rem;
         font-family: inherit;
         font-weight: 600;
-        margin-bottom: 2.5rem;
         border: none;
         border: 1px solid var(--dark-violet-1);
         border-radius: 7px;
+        margin-bottom: 1rem;
+
      
         &::placeholder {
             font-weight: 500;
         }
+
+       
     }
 
     //containers 
+    .name-container, .card-container, .date-box, .cvc-box, .more-detail-box {
+        margin-bottom: 1rem;
+    }
+
+    .name-container {
+        
+        #name {
+            width: 100%;
+        }
+    }
+
+    .card-container {
+
+        #cardno {
+            width: 100%;
+        }
+    }
+
     .date-box {
         width: 90%;
     }
@@ -196,3 +222,34 @@ body {
     }
 
 }
+
+.validation {
+    font-size: 1.4rem;
+    color: var(--error);
+}
+
+.error {
+    border: 1px solid var(--error)!important;
+    background-color: var(--error-rgba);
+
+    &:focus {
+        outline: none;
+        border-color: var(--error); /* Add a custom focus border color */
+        box-shadow: 0 0 0 1px var(--error); /* Add a custom focus box shadow */
+    }
+
+}
+
+
+.success {
+    border: 1px solid var(--success)!important;
+    background-color: var(--success-rgba);
+
+    &:focus {
+        outline: none;
+        border-color: var(--success); /* Add a custom focus border color */
+        box-shadow: 0 0 0 1px var(--success); /* Add a custom focus box shadow */
+    }
+
+}
+

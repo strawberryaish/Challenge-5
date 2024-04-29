@@ -19,11 +19,19 @@ const validationNames = document.getElementById('validation-name'),
       validationDate = document.getElementById('validation-date'),
       validationCVC = document.getElementById('validation-cvc');
 
+//BUTTON 
+const  submitBtn = document.querySelector('.btn');
+const form = document.querySelector('.form-box');
+
+//VALIDATION RESULT
+let resultName, resultCardNo, resultDate, resultCVC;
+
 //Validations
 const checkValidations = {
     emptyinput: function (inputName, validationID) { 
         if (inputName.value.trim() === '') {
             validationID.textContent = "Can't be blank";
+           
        }
         else {
             validationID.innerHTML =  '&nbsp;';
@@ -34,7 +42,7 @@ const checkValidations = {
     checkLength: function(inputLength, maxLength, validationID) { 
         if (!inputLength.value) return;
         
-        if (inputLength.value.length !== maxLength) {
+        if (inputLength.value.length < maxLength) {
             validationID.textContent = 'Length is too short';
         } 
         else {
@@ -45,18 +53,25 @@ const checkValidations = {
     //FUNCTIONS FOR CHECKING INDIVIDUAL INPUT FIELDS
 
     checkName: function(inputName, validationID) {
-        const checkEmpty = this.emptyinput(inputName, validationID);
+        const checkEmpty = this.emptyinput(inputName, validationID),
+              checkLength = this.checkLength(inputName, 5, validationID),
+              checkSymbols = /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~]/,
+              checkNumber = /[0-9]/,
 
-        inputName.className = checkEmpty ? 'success' : 'error';
+        checkFormat = checkNumber.test(inputName.value) || checkSymbols.test(inputName.value);
 
-        return checkEmpty;
+        checkFormat ? validationID.textContent = 'Wrong format, letters only' : true;
+
+        inputName.className = !checkFormat && checkLength && checkEmpty ? 'success' : 'error';
+
+        return !checkFormat && checkLength && checkEmpty;
     },
 
     checkCardNo: function(inputName, maxLength, validationID) { 
-        const checkCardNoFormat = isNaN(+inputName.value.replaceAll(' ', ''));
-        const checkEmptyAndLength = this.emptyinput(inputName, validationID) && this.checkLength(inputName, maxLength, validationID);
+        const checkCardNoFormat = isNaN(+inputName.value.replaceAll(' ', '')),
+              checkEmptyAndLength = this.emptyinput(inputName, validationID) && this.checkLength(inputName, maxLength, validationID);
 
-       checkCardNoFormat ? validationID.textContent = 'Wrong format, numbers only': true;
+        checkCardNoFormat ? validationID.textContent = 'Wrong format, numbers only': true;
 
         inputName.className = checkEmptyAndLength && !checkCardNoFormat ? 'success' : 'error';
 
@@ -64,12 +79,12 @@ const checkValidations = {
     },
 
     checkYearMonth: function(expMonth, expYear, maxLength, validationID) {
-        const month = expMonth.value, year = expYear.value;
-        
+        const month = expMonth.value, year = expYear.value,
+    
         //Check format and expiration date
-        const checkMonthLength = this.checkLength(expMonth, maxLength, validationID);
-        const checkYearLength = this.checkLength(expYear, maxLength, validationID);
-        const invalidMonth = month > 12;
+              checkMonthLength = this.checkLength(expMonth, maxLength, validationID),
+              checkYearLength = this.checkLength(expYear, maxLength, validationID),
+              invalidMonth = month > 12;
 
         if (invalidMonth) {
             validationID.textContent = 'Invalid Month';
@@ -122,14 +137,19 @@ const limitLength = (inputName, maxLength) => {
 
 //Event handlers
 //CARD HOLDER NAME
-inputName.addEventListener('input', function() {
+inputName.addEventListener('input', function(e) {
     const maxLength = 25;
 
     limitLength(this, maxLength);
-    checkValidations.checkName(this, validationNames);
+    resultName = checkValidations.checkName(this, validationNames);
 
     !this.value ? detailName.textContent = 'Aisha Willows' : detailName.textContent = this.value;
-  
+
+
+})
+
+inputCardNo.addEventListener('click', function(e) {
+ 
 })
 
 //CARD NUMBER
@@ -141,23 +161,27 @@ inputCardNo.addEventListener('keydown', function(e) {
     { e.preventDefault(); 
       return; }
 
-    else if (e.key === 'Backspace') return;
+    if (e.key === 'Backspace') return;
 
-    const cardLength = testing.length > 0 && testing.length < 16 ? testing.length : undefined;
+    let cardLength = testing.length > 0 && testing.length < 16 ? testing.length : undefined;
 
     //Divisible by 4, add whitespace
-    if (cardLength % 4 === 0) this.value += ' '; 
+    if (cardLength % 4 === 0) {this.value += ' '; }; 
+
+  
 })
 
 
-inputCardNo.addEventListener('input', function() {
+inputCardNo.addEventListener('input', function(e) {
     const maxLength = 19, defaultNo = '0000 0000 0000 0000';
     limitLength(this, maxLength);
 
+    
+   
     const updateCardNo = inputCardNo.value + defaultNo.slice(inputCardNo.value.length);
     detailCardNo.textContent = updateCardNo;
    
-    checkValidations.checkCardNo(this, maxLength, validationCardNo);
+    resultCardNo = checkValidations.checkCardNo(this, maxLength, validationCardNo);
 });
 
 //EXP DATE: MONTH
@@ -165,10 +189,11 @@ inputMonth.addEventListener('input', function() {
     const maxLength = 2;
     limitLength(this, maxLength);
 
+
     const updateMonth = this.value.padStart(maxLength, '0');
     detailMonth.textContent = updateMonth;
   
-    checkValidations.checkYearMonth(inputMonth, inputYear, maxLength, validationDate);
+    resultDate = checkValidations.checkYearMonth(inputMonth, inputYear, maxLength, validationDate);
     
 });
 
@@ -180,9 +205,10 @@ inputYear.addEventListener('input', function() {
     const updateYear = this.value.padStart(maxLength, '0');
 
     detailYear.textContent = updateYear;
-    checkValidations.checkYearMonth(inputMonth, inputYear, maxLength, validationDate);
+    resultDate = checkValidations.checkYearMonth(inputMonth, inputYear, maxLength, validationDate);
     
 });
+
 
 //CVC
 inputCVC.addEventListener('input', function(){
@@ -190,9 +216,22 @@ inputCVC.addEventListener('input', function(){
     limitLength(this, maxLength);
     const updateCVC = this.value.padEnd(maxLength, '0');
 
-    checkValidations.checkCVC(this, maxLength, validationCVC);
+    resultCVC = checkValidations.checkCVC(this, maxLength, validationCVC);
     detailCVC.textContent = updateCVC;
 
 });
 
+//Form
+form.addEventListener('submit', function(e){
+    e.preventDefault();
 
+    //for checking only
+    console.log(`Name: ${resultName}`);
+    console.log(`Card No: ${resultCardNo}`);
+    console.log(`Date: ${resultDate}`);
+    console.log(`CVC: ${resultCVC}`);
+
+    resultName && resultCardNo && resultDate && resultCVC ? alert('Success') : alert('Check your input and try again');
+    
+
+})

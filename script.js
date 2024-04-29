@@ -20,11 +20,17 @@ const validationNames = document.getElementById('validation-name'),
       validationCVC = document.getElementById('validation-cvc');
 
 //BUTTON 
-const  submitBtn = document.querySelector('.btn');
-const form = document.querySelector('.form-box');
+const  submitBtn = document.querySelector('.submit'), continueBtn = document.querySelector('.continue');
+
+//OTHERS
+const form = document.querySelector('.form-box')
+const completeContainer = document.querySelector('.complete-trans');
+let allInput = document.querySelectorAll('input');
+
 
 //VALIDATION RESULT
 let resultName, resultCardNo, resultDate, resultCVC;
+
 
 //Validations
 const checkValidations = {
@@ -65,6 +71,7 @@ const checkValidations = {
         inputName.className = !checkFormat && checkLength && checkEmpty ? 'success' : 'error';
 
         return !checkFormat && checkLength && checkEmpty;
+        
     },
 
     checkCardNo: function(inputName, maxLength, validationID) { 
@@ -222,7 +229,7 @@ inputCVC.addEventListener('input', function(){
 });
 
 //Form
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', e =>{
     e.preventDefault();
 
     //for checking only
@@ -231,7 +238,26 @@ form.addEventListener('submit', function(e){
     console.log(`Date: ${resultDate}`);
     console.log(`CVC: ${resultCVC}`);
 
-    resultName && resultCardNo && resultDate && resultCVC ? alert('Success') : alert('Check your input and try again');
-    
+   if (resultName && resultCardNo && resultDate && resultCVC)  {
+        completeContainer.style.display = "flex";
+        completeContainer.style.opacity = "1";
+        form.style.display = "none"; 
+    }
 
+    else {
+        alert('Check your input and try again');
+
+    }
+
+})
+
+//Continue
+continueBtn.addEventListener('click', () => {
+    completeContainer.style.display = "none";
+    form.style.display = "flex"; 
+    resultName = false, resultCardNo = false, resultDate = false, resultCVC = false;
+    inputName.className = '', inputCardNo.className = '', 
+    inputMonth.className = '', inputYear.className = '', inputCVC.className = '';
+
+    allInput.forEach(e => e.value = ''); 
 })

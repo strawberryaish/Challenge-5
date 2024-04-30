@@ -24,8 +24,6 @@ html {
     --error-rgba: hsla(0, 88%, 51%, 0.207);
     --success: hsl(117, 97%, 26%);
     --success-rgba: hsla(117, 99%, 57%, 0.064);
-
-
 }
 
 
@@ -52,52 +50,57 @@ body {
         &-back, &-front {
             position: absolute;
             transform: translate(-50%, -50%);
+            width: 45rem;
+            height: 25rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: flex;
         }
         
         &-back {
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: var(--color-white);
+            padding: 2rem;
+            background-image: url(images/bg-card-back.png);
             top: 61%;
             left: 100%; 
+            align-items: flex-end;
+            justify-content: center;
+            flex-direction: column;
+          
+            .cvc-detail {
+             margin-right: 3.5rem;
+             margin-top: -1rem;
 
-        
-            &-details {
-                position: absolute;
-                top: 44%;
-                right: 11%;
-                font-size: 1.6rem;
-                color: var(--color-white);
-                font-weight: 600;
-                
             }
         }
 
         &-front {
-            position: absolute;
             top: 30%; 
             left: 80%; 
-            display: flex;
+            background-image: url(images/bg-card-front.png);
             
-
             &-details {
                 padding: 2rem;
-                position: absolute;
-                top: 50%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
+                justify-content: space-around;
                 gap: 2rem;
-
                 width: 100%;
                 color: var(--color-white);
 
                 .card-logo {
                     width: 9rem;
-                    position: absolute;
-                    bottom: 140%;
+                
                 }
 
                 .card-no-detail {
                     font-size: 2.8rem;
                     font-weight: 500;
                     letter-spacing: 2.5px;
+                    margin-bottom: 2.5rem;
 
                 }
 
@@ -121,7 +124,6 @@ body {
     justify-content: center;
     flex: 1;
     transition: opacity 0.5s ease;
-
 
     &-form{
     display: flex;
@@ -204,8 +206,6 @@ body {
         }
 
     }
-
-
 }
 
 .validation {
@@ -219,10 +219,9 @@ body {
 
     &:focus {
         outline: none;
-        border-color: var(--error); /* Add a custom focus border color */
-        box-shadow: 0 0 0 1px var(--error); /* Add a custom focus box shadow */
+        border-color: var(--error); 
+        box-shadow: 0 0 0 1px var(--error);
     }
-
 }
 
 
@@ -232,12 +231,11 @@ body {
 
     &:focus {
         outline: none;
-        border-color: var(--success); /* Add a custom focus border color */
-        box-shadow: 0 0 0 1px var(--success); /* Add a custom focus box shadow */
+        border-color: var(--success);
+        box-shadow: 0 0 0 1px var(--success); 
     }
 
 }
-
 
 .btn {
     padding: 1.5rem;

@@ -5,7 +5,22 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 61.5%;
+}
+@media only screen and (max-width: 1600px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  html {
+    font-size: 58%;
+  }
+}
+@media only screen and (max-width: 760px) {
+  html {
+    font-size: 56%;
+  }
 }
 
 @font-face {
@@ -25,18 +40,31 @@ html {
 
 body {
   font-family: "SpaceGrotesk", sans-serif;
-  overflow: hidden;
 }
 
 .container {
   display: flex;
+  height: 100vh;
+}
+@media only screen and (max-width: 1020px) {
+  .container {
+    flex-direction: column;
+  }
 }
 
 .image-box {
   position: relative;
+  width: 30%;
+  background-image: url(images/bg-main-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.image-box .bg-image {
-  height: 100vh;
+@media only screen and (max-width: 1020px) {
+  .image-box {
+    height: 40%;
+    width: 100%;
+    flex-shrink: 0;
+  }
 }
 .image-box .card-box-back, .image-box .card-box-front {
   position: absolute;
@@ -46,6 +74,28 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   display: flex;
+}
+@media only screen and (max-width: 1600px) {
+  .image-box .card-box-back, .image-box .card-box-front {
+    width: 43rem;
+    transform: translate(-53%, -50%);
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .image-box .card-box-back, .image-box .card-box-front {
+    width: 38rem;
+    transform: translate(-55%, -45%);
+  }
+}
+@media only screen and (max-width: 1020px) {
+  .image-box .card-box-back, .image-box .card-box-front {
+    transform: translate(-10%, 0%);
+  }
+}
+@media only screen and (max-width: 760px) {
+  .image-box .card-box-back, .image-box .card-box-front {
+    transform: translate(-25%, 0%);
+  }
 }
 .image-box .card-box-back {
   font-weight: 600;
@@ -59,14 +109,55 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+@media only screen and (max-width: 1600px) {
+  .image-box .card-box-back {
+    top: 66%;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .image-box .card-box-back {
+    top: 67%;
+    font-size: 1.6rem;
+  }
+}
+@media only screen and (max-width: 1020px) {
+  .image-box .card-box-back {
+    left: 43%;
+    top: 18%;
+    z-index: 1;
+  }
+}
 .image-box .card-box-back .cvc-detail {
   margin-right: 3.5rem;
   margin-top: -1rem;
+}
+@media only screen and (max-width: 1600px) {
+  .image-box .card-box-back .cvc-detail {
+    margin-top: -2rem;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .image-box .card-box-back .cvc-detail {
+    margin-right: 2.6rem;
+    margin-top: -4.5rem;
+  }
 }
 .image-box .card-box-front {
   top: 30%;
   left: 80%;
   background-image: url(images/bg-card-front.png);
+}
+@media only screen and (max-width: 1020px) {
+  .image-box .card-box-front {
+    left: 30%;
+    top: 45%;
+    z-index: 2;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .image-box .card-box-front .no-name-date {
+    margin-top: 10%;
+  }
 }
 .image-box .card-box-front-details {
   padding: 2rem;
@@ -78,14 +169,30 @@ body {
   width: 100%;
   color: var(--color-white);
 }
+@media only screen and (max-width: 1240px) {
+  .image-box .card-box-front-details {
+    justify-content: flex-start;
+  }
+}
 .image-box .card-box-front-details .card-logo {
   width: 9rem;
+}
+@media only screen and (max-width: 1240px) {
+  .image-box .card-box-front-details .card-logo {
+    width: 8rem;
+  }
 }
 .image-box .card-box-front-details .card-no-detail {
   font-size: 2.8rem;
   font-weight: 500;
   letter-spacing: 2.5px;
   margin-bottom: 2.5rem;
+}
+@media only screen and (max-width: 1240px) {
+  .image-box .card-box-front-details .card-no-detail {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
 }
 .image-box .card-box-front-details .front-box-1 {
   display: flex;
@@ -105,8 +212,19 @@ body {
 .form-box-form {
   display: flex;
   flex-direction: column;
-  width: 45rem;
+  width: 50rem;
   padding: 1rem;
+}
+@media only screen and (max-width: 1240px) {
+  .form-box-form {
+    width: 40rem;
+  }
+}
+@media only screen and (max-width: 1020px) {
+  .form-box-form {
+    width: 45rem;
+    margin-top: 10rem;
+  }
 }
 .form-box label {
   font-size: 1.6rem;

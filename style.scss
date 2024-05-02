@@ -9,7 +9,8 @@ $bigLaptop: 1600px;
 $smallLaptop: 1240px;
 $smallLaptop2: 1020px;
 $tablet: 760px;
-
+$phone1: 470px;
+// $phone2: 375px;
 
 
 
@@ -28,7 +29,9 @@ html {
         font-size: 56%;
       }   
 
-      
+    @media only screen and (max-width: $phone1) {
+        font-size: 53%;
+    }  
 
     
 }
@@ -78,9 +81,14 @@ body {
         height: 40%;
         width: 100%;
         flex-shrink: 0;
-
-        
       }
+
+    @media only screen and (max-width: $phone1) {
+        height: 35%;
+        background-image: url(images/bg-main-mobile.png);
+    }
+
+    
     
 
 
@@ -104,16 +112,20 @@ body {
             @media only screen and (max-width: $smallLaptop) {
                 width: 38rem;
                 transform: translate(-55%, -45%);
-
              }
 
-             @media only screen and (max-width: $smallLaptop2) {
+            @media only screen and (max-width: $smallLaptop2) {
                 transform: translate(-10%, 0%);
               }
 
-              @media only screen and (max-width: $tablet) {
+            @media only screen and (max-width: $tablet) {
                 transform: translate(-25%, 0%);
               }
+
+            @media only screen and (max-width: $phone1) {
+                width: 33rem;
+                transform: translate(-30%, 15%);
+            }
  
         }
         
@@ -145,7 +157,11 @@ body {
                 z-index: 1;
               }
 
+            @media only screen and (max-width: $phone1) {
+               top: 11%;
+            }
 
+           
         
             .cvc-detail {
              margin-right: 3.5rem;
@@ -160,6 +176,13 @@ body {
                 margin-right: 2.6rem;
                 margin-top: -4.5rem;
              }
+
+             
+             @media only screen and (max-width: $phone1) {
+                margin-top: -7.5rem;
+                margin-right: 1.6rem;
+                font-size: 1.4rem;
+            }
          
             }
         }
@@ -196,12 +219,22 @@ body {
                     justify-content: flex-start;
                  }
 
+                @media only screen and (max-width: $phone1) {
+                    gap: 1rem;
+                 }
+
+                 
+
                 .card-logo {
                     width: 9rem;
 
                     @media only screen and (max-width: $smallLaptop) {
                         width: 8rem;
                      }
+
+                    @media only screen and (max-width: $phone1) {
+                       width: 7rem;
+                    }
                 
                 }
                 
@@ -216,6 +249,11 @@ body {
                         margin-bottom: 2rem;
                      }
 
+                    @media only screen and (max-width: $phone1) {
+                        font-size: 2rem;
+                        margin-bottom: 1.5rem;
+                    }
+
                 }
 
                 .front-box-1 {
@@ -225,6 +263,9 @@ body {
                     text-transform: uppercase;
                     letter-spacing: 1.2px;
 
+                    @media only screen and (max-width: $phone1) {
+                        font-size: 1.2rem;
+                     }
                 
                 }
             }
@@ -255,10 +296,13 @@ body {
         margin-top: 10rem;
      }
 
-
      
-
-
+     @media only screen and (max-width: $phone1) {
+        margin-top: 0;
+        padding: 0 2rem;
+        width: 40rem;
+    }
+     
      }
 
     label {

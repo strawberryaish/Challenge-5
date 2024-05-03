@@ -340,6 +340,11 @@ body {
   font-size: 1.4rem;
   color: var(--error);
 }
+@media only screen and (max-width: 470px) {
+  .validation {
+    font-size: 1.2rem;
+  }
+}
 
 .error {
   border: 1px solid var(--error) !important;
@@ -385,6 +390,21 @@ body {
   gap: 1rem;
   transition: opacity 0.5s ease;
 }
+@media only screen and (max-width: 1020px) {
+  .complete-trans {
+    margin-top: 8rem;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .complete-trans img {
+    width: 7.5rem;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .complete-trans img {
+    width: 7rem;
+  }
+}
 .complete-trans-title {
   font-size: 6rem;
   font-weight: 400;
@@ -392,10 +412,45 @@ body {
   letter-spacing: 4px;
   color: var(--dark-violet-2);
 }
+@media only screen and (max-width: 1600px) {
+  .complete-trans-title {
+    font-size: 5.5rem;
+  }
+}
+@media only screen and (max-width: 1240px) {
+  .complete-trans-title {
+    font-size: 5.2rem;
+  }
+}
+@media only screen and (max-width: 1020px) {
+  .complete-trans-title {
+    font-size: 5rem;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .complete-trans-title {
+    font-size: 4.8rem;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .complete-trans-title {
+    font-size: 4.5rem;
+  }
+}
 .complete-trans-detail {
   font-size: 2rem;
   color: var(--dark-violet-1);
   margin-bottom: 4rem;
+}
+@media only screen and (max-width: 1020px) {
+  .complete-trans-detail {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .complete-trans-detail {
+    font-size: 1.6rem;
+  }
 }
 .complete-trans .continue {
   width: 30rem;

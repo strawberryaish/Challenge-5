@@ -382,6 +382,11 @@ body {
 .validation {
     font-size: 1.4rem;
     color: var(--error);
+
+    @media only screen and (max-width: $phone1) {
+        font-size: 1.2rem;
+
+      }
 }
 
 .error {
@@ -435,12 +440,52 @@ body {
 
     transition: opacity 0.5s ease;
 
+    
+    @media only screen and (max-width: $smallLaptop2) {
+        margin-top: 8rem;
+      }
+
+
+    img {
+        @media only screen and (max-width: $smallLaptop) {
+            width: 7.5rem;
+            
+         }
+
+         @media only screen and (max-width: $phone1) {
+            width: 7rem;
+
+          }
+    }
+
     &-title {
        font-size: 6rem;
        font-weight: 400;
        text-transform: uppercase;
        letter-spacing: 4px;
        color: var(--dark-violet-2);
+
+       @media only screen and (max-width: $bigLaptop) {
+        font-size: 5.5rem;
+
+     }
+
+    @media only screen and (max-width: $smallLaptop) {
+        font-size: 5.2rem;
+        
+     }
+
+    @media only screen and (max-width: $smallLaptop2) {
+        font-size: 5rem;
+      }
+
+    @media only screen and (max-width: $tablet) {
+       font-size: 4.8rem;
+      }
+
+    @media only screen and (max-width: $phone1) {
+      font-size: 4.5rem;
+    }
     }
 
     &-detail {
@@ -448,9 +493,21 @@ body {
        color: var(--dark-violet-1);
        margin-bottom: 4rem;
 
+
+    @media only screen and (max-width: $smallLaptop2) {
+        font-size: 1.8rem;
+
+      }
+
+    @media only screen and (max-width: $tablet) {
+       font-size: 1.6rem;
+      }
+
+ 
     }
 
     .continue {
         width: 30rem;
+
     }
 }
